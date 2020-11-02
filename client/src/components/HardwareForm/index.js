@@ -38,6 +38,7 @@ const AddHeaderForm = ({setShowForm, showForm, hardware}) => {
             setType(event.target.value);
         }
 
+        console.log(error);
         //setAddress(event.target.value);
     };
 

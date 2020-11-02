@@ -32,3 +32,8 @@ a {
   margin-right: 3em;
   font-size: 20px;
 }
+
+.hardwarecard {
+  background-color: lightblue;
+  margin: 10px, 0, 10px, 0;
+}

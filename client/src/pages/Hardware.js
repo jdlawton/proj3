@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useQuery} from '@apollo/react-hooks';
 import {ALL_HARDWARE} from '../utils/queries';
-//import {Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 //import any components used on this page
 import AddHardwareForm from '../components/HardwareForm';
@@ -32,15 +32,18 @@ const Hardware = () => {
             {loading ? (
                 <div>Loading...</div>
             ) : (
-                <div className="hardware">
+                <div>
                     {hardware.map((element, index) => (
-                        <div key={index}>
-                            <h3>{element.hostname}</h3>
-                            <p>{element.type}</p>
-                            <p>{element.address}</p>
-                            <p>{element.role}</p>
-                            <p>Notes:</p>
-                            <p>{element.notes}</p>
+                        <div key={index} className="hardwarecard">
+                            <Link to={`/hardware/${element._id}`}>
+                                <h3>{element.hostname}</h3>
+                                <p>{element.type}</p>
+                                <p>{element.address}</p>
+                                <p>{element.role}</p>
+                                <p>Notes:</p>
+                                <p>{element.notes}</p>
+                            </Link>
+
                         </div>
                     ))}
                 </div>

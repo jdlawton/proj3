@@ -12,3 +12,16 @@ export const ALL_HARDWARE = gql `
         }
     }
 `;
+
+export const ONE_HARDWARE = gql `
+    query oneHardware ($hardwareId: ID!){
+        oneHardware (hardwareId: $hardwareId) {
+            _id
+            type
+            hostname
+            address
+            role
+            notes
+        }
+    }
+`;
