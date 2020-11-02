@@ -12,3 +12,16 @@ export const ADD_HARDWARE = gql `
         }
     }
 `;
+
+export const UPDATE_HARDWARE = gql`
+    mutation updateHardware($hardwareId: ID!, $type: String, $hostname: String, $address: String, $role: String, $notes: String){
+        updateHardware(hardwareId: $hardwareId, type: $type, hostname: $hostname, address: $address, role: $role, notes: $notes) {
+            _id
+            type
+            hostname
+            address
+            role
+            notes
+        }
+    }
+`;
