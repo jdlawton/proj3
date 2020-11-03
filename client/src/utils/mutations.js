@@ -25,3 +25,16 @@ export const UPDATE_HARDWARE = gql`
         }
     }
 `;
+
+export const DELETE_HARDWARE = gql`
+    mutation deleteHardware ($hardwareId: ID!){
+        deleteHardware(hardwareId: $hardwareId) {
+            _id
+            type
+            hostname
+            address
+            role
+            notes
+        }
+    }
+`;

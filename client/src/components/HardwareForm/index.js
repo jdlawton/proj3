@@ -55,6 +55,7 @@ const AddHeaderForm = ({setShowForm, showForm, hardware}) => {
             await addHardware({
                 variables: {type, hostname, address, role, notes}
             });
+            window.location.href="/hardware";
 
             //clear form values
             setType('server');

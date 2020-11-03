@@ -3,7 +3,7 @@ import {useParams} from 'react-router-dom';
 import {useQuery} from '@apollo/react-hooks';
 import {ONE_HARDWARE} from '../utils/queries';
 import {useMutation} from '@apollo/react-hooks';
-import {UPDATE_HARDWARE} from '../utils/mutations';
+import {UPDATE_HARDWARE, DELETE_HARDWARE} from '../utils/mutations';
 
 const SingleHardware = () => {
     const {id: hardwareId} = useParams();
@@ -16,6 +16,7 @@ const SingleHardware = () => {
     const [notes, setNotes] = useState('');
     const [type, setType] = useState('server');
     const [updateHardware, {error}] = useMutation(UPDATE_HARDWARE);
+    const [deleteHardware] = useMutation(DELETE_HARDWARE);
 
     const {loading, data} = useQuery(ONE_HARDWARE, {
         variables: {hardwareId: hardwareId}
@@ -50,7 +51,7 @@ const SingleHardware = () => {
 
     const handleFormSubmit = async event => {
         event.preventDefault();
-            console.log("type: " + type);
+            //console.log("type: " + type);
             // console.log("hostname: " + hostname);
             // console.log("address: " + address);
             // console.log("role: " + role);
@@ -66,6 +67,18 @@ const SingleHardware = () => {
             console.error(e);
         }
     };
+
+    const removeHardware = () => {
+        console.log("Inside Delete");
+        try{
+            deleteHardware({
+                variables: {hardwareId}
+            });
+            window.location.href="/hardware";
+        } catch (e) {
+            console.error(e);
+        }
+    }
 
     const toggleForm = () => {
         if (showForm === 0) {
@@ -92,6 +105,7 @@ const SingleHardware = () => {
             <p>{hardware.role}</p>
             <p>{hardware.notes}</p>
             <button onClick={toggleForm}>Edit</button>
+            <button onClick={removeHardware}>Delete</button>
             {showForm > 0 && 
                 <form onSubmit={handleFormSubmit}>
                     <label htmlFor="type">Device Type:</label>
