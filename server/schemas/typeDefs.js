@@ -8,7 +8,11 @@ const typeDefs = gql`
         type: String
         hostname: String
         address: String
+        mask: String
+        gateway: String
+        mac: String
         role: String
+        description: String
         notes: String
     }
 
@@ -18,8 +22,8 @@ const typeDefs = gql`
     }
 
     type Mutation {
-        addHardware(type: String!, hostname: String!, address: String, role: String, notes: String): Hardware
-        updateHardware(hardwareId: ID!, type: String, hostname: String, address: String, role: String, notes: String): Hardware
+        addHardware(type: String!, hostname: String!, address: String, mask: String, gateway: String, mac: String, role: String, description: String, notes: String): Hardware
+        updateHardware(hardwareId: ID!, type: String, hostname: String, address: String, mask: String, gateway: String, mac: String, role: String, description: String, notes: String): Hardware
         deleteHardware(hardwareId: ID!): Hardware
     }
 

@@ -12,6 +12,10 @@ code {
     monospace;
 }
 
+main {
+  margin: 10px;
+}
+
 a {
   text-decoration: none;
   color: black;
@@ -33,7 +37,45 @@ a {
   font-size: 20px;
 }
 
+.cardwrapper {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
 .hardwarecard {
-  background-color: lightblue;
-  margin: 10px, 0, 10px, 0;
+  background-color: lightskyblue;
+  margin: 10px;
+  min-width: 20%;
+  border-right-style: outset;
+  border-bottom-style: outset;
+  border-radius: 15px;
+  border-width: 3px;
+}
+
+.cardheader * {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.cardbody {
+  margin-left: 10px;
+}
+
+.cardlabel {
+  font-weight: bold;
+}
+
+.addhardwareform {
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.formitem {
+  display: block;
+}
+
+.formlabel {
+  font-size: 14px;
 }

@@ -32,16 +32,18 @@ const Hardware = () => {
             {loading ? (
                 <div>Loading...</div>
             ) : (
-                <div>
+                <div className="cardwrapper">
                     {hardware.map((element, index) => (
                         <div key={index} className="hardwarecard">
                             <Link to={`/hardware/${element._id}`}>
-                                <h3>{element.hostname}</h3>
-                                <p>{element.type}</p>
-                                <p>{element.address}</p>
-                                <p>{element.role}</p>
-                                <p>Notes:</p>
-                                <p>{element.notes}</p>
+                                <div className="cardheader">
+                                    <h3>{element.hostname}</h3>
+                                    <p>{element.role}</p>
+                                </div>
+                                <div className="cardbody">
+                                    <p><span className="cardlabel">Address:</span><br></br>{element.address}</p>
+                                    <p><span className="cardlabel">Description:</span><br></br>{element.description}</p>
+                                </div>
                             </Link>
 
                         </div>

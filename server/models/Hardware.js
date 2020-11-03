@@ -10,18 +10,35 @@ const hardwareSchema = new Schema(
         hostname: {
             type: String,
             required: true,
+            unique: true,
             trim: true
 
         },
         address: {
             type: String,
+            unique: true,
             trim: true
-
+        },
+        mask: {
+            type: String,
+            trim: true
+        },
+        gateway: {
+            type: String,
+            trim: true
+        },
+        mac: {
+            type: String,
+            trim: true
         },
         role: {
             type: String,
             trim: true
 
+        },
+        description: {
+            type: String,
+            trim: true
         },
         notes: {
             type: String,

@@ -7,7 +7,11 @@ export const ALL_HARDWARE = gql `
             type
             hostname
             address
+            mask
+            gateway
+            mac
             role
+            description
             notes
         }
     }
@@ -20,7 +24,11 @@ export const ONE_HARDWARE = gql `
             type
             hostname
             address
+            mask
+            gateway
+            mac
             role
+            description
             notes
         }
     }
