@@ -5,7 +5,9 @@ const resolvers = {
         //get all Hardware
         allHardware: async (parent, args) => {
             return Hardware.find()
-                .select('-__v');
+                .select('-__v')
+                .sort('type')
+                .sort('role');
         },
         //get single Hardware by ID
         oneHardware: async (parent, args) => {

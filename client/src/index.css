@@ -21,6 +21,7 @@ a {
   color: black;
 }
 
+
 .navbar {
   display: flex;
 }
@@ -39,14 +40,14 @@ a {
 
 .cardwrapper {
   display: flex;
-  justify-content: space-around;
+
   flex-wrap: wrap;
 }
 
 .hardwarecard {
   background-color: lightskyblue;
   margin: 10px;
-  min-width: 20%;
+  min-width: 15%;
   border-right-style: outset;
   border-bottom-style: outset;
   border-radius: 15px;
@@ -74,8 +75,41 @@ a {
 
 .formitem {
   display: block;
+  margin-top: 5px;
 }
 
 .formlabel {
   font-size: 14px;
+}
+
+.detailswrapper {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.details {
+  background-color: lightskyblue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40%;
+  border-right-style: outset;
+  border-bottom-style: outset;
+  border-radius: 15px;
+  border-width: 3px;
+
+}
+
+.btn {
+  margin-top: 15px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.hardwareeditform {
+  margin-top: 10px;
+  margin-left: 20px;
 }

@@ -72,16 +72,16 @@ const SingleHardware = () => {
 
     const handleFormSubmit = async event => {
         event.preventDefault();
-        console.log(hardwareId);
-        console.log("type: " + type);
-        console.log("hostname: " + hostname);
-        console.log("address: " + address);
-        console.log("mask: " + mask);
-        console.log("gateway: " + gateway);
-        console.log("MAC: " + mac);
-        console.log("role: " + role);
-        console.log("description: " + description);
-        console.log("notes: " + notes);
+        // console.log(hardwareId);
+        // console.log("type: " + type);
+        // console.log("hostname: " + hostname);
+        // console.log("address: " + address);
+        // console.log("mask: " + mask);
+        // console.log("gateway: " + gateway);
+        // console.log("MAC: " + mac);
+        // console.log("role: " + role);
+        // console.log("description: " + description);
+        // console.log("notes: " + notes);
 
         try{
             await updateHardware({
@@ -127,51 +127,76 @@ const SingleHardware = () => {
     }
 
     return (
-        <div>
-            <h1>Single Hardware Page</h1>
-            <p>{hardware.type}</p>
-            <p>{hardware.hostname}</p>
-            <p>{hardware.address}</p>
-            <p>{hardware.mask}</p>
-            <p>{hardware.gateway}</p>
-            <p>{hardware.mac}</p>
-            <p>{hardware.role}</p>
-            <p>{hardware.description}</p>
-            <p>{hardware.notes}</p>
-            <button onClick={toggleForm}>Edit</button>
-            <button onClick={removeHardware}>Delete</button>
+        <div className="detailswrapper">
+            <div className="details">
+                <h2>{hardware.hostname}</h2>
+                <div className="detailsbody">
+                    <p><span className="cardlabel">Role: </span>{hardware.role}</p>
+                    <p><span className="cardlabel">Address: </span>{hardware.address}</p>
+                    <p><span className="cardlabel">Netmask: </span>{hardware.mask}</p>
+                    <p><span className="cardlabel">Gateway: </span>{hardware.gateway}</p>
+                    <p><span className="cardlabel">MAC Address: </span>{hardware.mac}</p>
+                    <p><span className="cardlabel">Description: </span>{hardware.description}</p>
+                    <p><span className="cardlabel">Notes: </span><br></br>{hardware.notes}</p>
+                </div>
+            </div>
+
+            <div classname="detailsbuttons">
+                <button className="btn" onClick={toggleForm}>Edit</button>
+                <button className="btn" onClick={removeHardware}>Delete</button>
+            </div>
+            
             {showForm > 0 && 
-                <form onSubmit={handleFormSubmit}>
-                    <label htmlFor="type">Device Type:</label>
-                    <select id="type" name="type" value={type} onChange={handleChange}>
-                        <option value="server">Server</option>
-                        <option value="switch">Switch</option>
-                        <option value="firewall">Firewall</option>
-                        <option value="printer">Printer</option>
-                    </select>
-                    <label htmlFor="hostname">Hostname:</label>
-                    <input type="text" id="hostname" name="hostname" value={hostname} onChange={handleChange}/>
+                <form className="hardwareeditform" onSubmit={handleFormSubmit}>
+                    <div className="formitem">
+                        <label htmlFor="type" className="formlabel">Device Type:</label><br></br>
+                        <select id="type" name="type" value={type} onChange={handleChange}>
+                            <option value="server">Server</option>
+                            <option value="switch">Switch</option>
+                            <option value="firewall">Firewall</option>
+                            <option value="printer">Printer</option>
+                        </select>
+                    </div>
 
-                    <label htmlFor="address">Address:</label>
-                    <input type="text" id="address" name="address" value={address} onChange={handleChange}/>
+                    <div className="formitem">
+                        <label htmlFor="hostname" className="formlabel">Hostname:</label><br></br>
+                        <input type="text" id="hostname" name="hostname" value={hostname} onChange={handleChange}/>
+                    </div>
 
-                    <label htmlFor="mask">Mask:</label>
-                    <input type="text" id="mask" name="mask" value={mask} onChange={handleChange}/>
+                    <div className="formitem">
+                        <label htmlFor="address" className="formlabel">Address:</label><br></br>
+                        <input type="text" id="address" name="address" value={address} onChange={handleChange}/>
+                    </div>
 
-                    <label htmlFor="gateway">Gateway:</label>
-                    <input type="text" id="gateway" name="gateway" value={gateway} onChange={handleChange}/>
+                    <div className="formitem">
+                        <label htmlFor="mask" className="formlabel">Mask:</label><br></br>
+                        <input type="text" id="mask" name="mask" value={mask} onChange={handleChange}/>
+                    </div>
 
-                    <label htmlFor="mac">MAC Address:</label>
-                    <input type="text" id="mac" name="mac" value={mac} onChange={handleChange}/>
+                    <div className="formitem">
+                        <label htmlFor="gateway" className="formlabel">Gateway:</label><br></br>
+                        <input type="text" id="gateway" name="gateway" value={gateway} onChange={handleChange}/>
+                    </div>
 
-                    <label htmlFor="role">Role:</label>
-                    <input type="text" id="role" name="role" value={role} onChange={handleChange}/>
+                    <div className="formitem">
+                        <label htmlFor="mac" className="formlabel">MAC Address:</label><br></br>
+                        <input type="text" id="mac" name="mac" value={mac} onChange={handleChange}/>
+                    </div>
 
-                    <label htmlFor="description">Description:</label>
-                    <input type="text" id="description" name="description" value={description} onChange={handleChange}/>
+                    <div className="formitem">
+                        <label htmlFor="role" className="formlabel">Role:</label><br></br>
+                        <input type="text" id="role" name="role" value={role} onChange={handleChange}/>
+                    </div>
 
-                    <label htmlFor="notes">Notes:</label>
-                    <textarea type="text" id="notes" name="notes" value={notes} onChange={handleChange}/>
+                    <div className="formitem">
+                        <label htmlFor="description" className="formlabel">Description:</label><br></br>
+                        <input type="text" id="description" name="description" value={description} onChange={handleChange}/>
+                    </div>
+
+                    <div className="formitem">
+                        <label htmlFor="notes" className="formlabel">Notes:</label><br></br>
+                        <textarea type="text" id="notes" name="notes" rows="10" cols="100" value={notes} onChange={handleChange}/>
+                    </div> 
                     <button type="submit">Submit</button>
                 </form>
             }

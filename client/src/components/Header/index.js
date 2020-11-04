@@ -8,7 +8,7 @@ const Header = () => {
     return (
         <header>
             <nav className="navbar">
-                <Link to="/"><img src={logo} alt="logo"/></Link>
+                <Link to="/"><img src={logo} alt="logo" className="logo"/></Link>
                 <ul className="navlist">
                     <li className="navitem"><Link to="/hardware">Hardware</Link></li>
                     <li className="navitem"><Link to="/software">Software</Link></li>
