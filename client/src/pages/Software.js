@@ -8,7 +8,7 @@ const Software = () => {
     
     return (
         <main>
-            <h1>Software Page</h1>
+            <h1>Software</h1>
         </main>
     )
 }

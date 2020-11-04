@@ -8,7 +8,7 @@ const Services = () => {
     
     return (
         <main>
-            <h1>Services Page</h1>
+            <h1>Services</h1>
         </main>
     )
 }
