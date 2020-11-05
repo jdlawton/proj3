@@ -20,7 +20,7 @@ const Header = () => {
                         <ul className="navlist">
                             <li className="navitem"><Link to="/hardware">Hardware</Link></li>
                             <li className="navitem"><Link to="/software">Software</Link></li>
-                            <li className="navitem"><Link to="/services">Services</Link></li>
+                            <li className="navitem"><Link to="/service">Services</Link></li>
                             <a className="navitem" href="/" onClick={logout}>Logout</a>
                         </ul>
                     </>

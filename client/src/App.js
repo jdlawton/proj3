@@ -12,10 +12,11 @@ import Hardware from './pages/Hardware';
 import NoMatch from './pages/NoMatch';
 import Software from './pages/Software';
 import SingleSoftware from './pages/SingleSoftware';
-import Services from './pages/Services';
 import SingleHardware from './pages/SingleHardware';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
+import Service from './pages/Service';
+import SingleService from './pages/SingleService';
 
 
 const client = new ApolloClient({
@@ -45,9 +46,10 @@ function App() {
             <Route exact path="/login" component={Login} />
             <Route exact path="/hardware" component = {Hardware} />
             <Route exact path="/software" component = {Software} />
-            <Route exact path="/services" component = {Services} />
             <Route exact path="/hardware/:id" component={SingleHardware} />
             <Route exact path="/software/:id" component={SingleSoftware} />
+            <Route exact path="/service" component = {Service} />
+            <Route exact path="/service/:id" component={SingleService} />
 
             <Route component={NoMatch} />
           </Switch>

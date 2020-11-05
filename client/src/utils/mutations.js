@@ -113,3 +113,45 @@ export const DELETE_SOFTWARE = gql`
         }
     }
 `;
+
+export const ADD_SERVICE = gql`
+    mutation addService($name: String!, $role: String, $phone: String, $email: String, $portal: String, $notes: String){
+        addService(name: $name, role: $role, phone: $phone, email: $email, portal: $portal, notes: $notes){
+            _id
+            name
+            role
+            phone
+            email
+            portal
+            notes
+        }
+    }
+`;
+
+export const UPDATE_SERVICE = gql`
+    mutation updateService($serviceId: ID!, $name: String, $role: String, $phone: String, $email: String, $portal: String, $notes: String){
+        updateService(serviceId: $serviceId, name: $name, role: $role, phone: $phone, email: $email, portal: $portal, notes: $notes){
+            _id
+            name
+            role
+            phone
+            email
+            portal
+            notes
+        }
+    }
+`;
+
+export const DELETE_SERVICE = gql`
+    mutation deleteService ($serviceId: ID!){
+        deleteService (serviceId: $serviceId){
+            _id
+            name
+            role
+            phone
+            email
+            portal
+            notes
+        }
+    }
+`;

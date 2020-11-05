@@ -59,3 +59,31 @@ export const ONE_SOFTWARE = gql `
         }
     }
 `;
+
+export const ALL_SERVICE = gql `
+    query allService {
+        allService {
+            _id
+            name
+            role
+            phone
+            email
+            portal
+            notes
+        }
+    }
+`;
+
+export const ONE_SERVICE = gql`
+    query oneService ($serviceId: ID!){
+        oneService (serviceId: $serviceId){
+            _id
+            name
+            role
+            phone
+            email
+            portal
+            notes
+        }
+    }
+`;

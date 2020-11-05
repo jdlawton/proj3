@@ -94,25 +94,25 @@ const Software = () => {
             <h1>Software</h1>
             <button onClick={toggleForm}>Add Software</button>
             {showForm > 0 && 
-                <form className="addsoftwareform" onSubmit={handleFormSubmit}>
+                <form className="addform" onSubmit={handleFormSubmit}>
                     <div className="formitem">
-                        <label htmlFor="name" className="formlabel">Name:</label><br></br>
+                        <label htmlFor="name" className="formlabel">Name: </label><br></br>
                         <input type="text" id="name" name="name" value={name} onChange={handleChange}/>
                     </div>
                     <div className="formitem">
-                        <label htmlFor="installPoint" className="formlabel">Install Point:</label><br></br>
+                        <label htmlFor="installPoint" className="formlabel">Install Point: </label><br></br>
                         <input type="text" id="installPoint" name="installPoint" value={installPoint} onChange={handleChange}/>
                     </div>
                     <div className="formitem">
-                        <label htmlFor="licensing" className="formlabel">Licensing:</label><br></br>
+                        <label htmlFor="licensing" className="formlabel">Licensing: </label><br></br>
                         <input type="text" id="licensing" name="licensing" value={licensing} onChange={handleChange}/>
                     </div>
                     <div className="formitem">
-                        <label htmlFor="instructions" className="formlabel">Instructions:</label><br></br>
+                        <label htmlFor="instructions" className="formlabel">Instructions: </label><br></br>
                         <input type="text" id="instructions" name="instructions" value={instructions} onChange={handleChange}/>
                     </div>
                     <div className="formitem">
-                        <label htmlFor="notes" className="formlabel">Notes:</label><br></br>
+                        <label htmlFor="notes" className="formlabel">Notes: </label><br></br>
                         <textarea type="text" id="notes" name="notes" rows="10" cols="100" value={notes} onChange={handleChange}/>
                     </div> 
                     <button type="submit">Submit</button>

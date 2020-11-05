@@ -1,4 +1,4 @@
-const {Hardware, User, Software} = require('../models');
+const {Hardware, User, Software, Service} = require('../models');
 const {AuthenticationError} = require('apollo-server-express');
 const {signToken} = require('../utils/auth');
 
@@ -36,14 +36,14 @@ const resolvers = {
                 return Software.find()
                 .select('-__v');
             }
-            throw new AuthenticationError('Not logged in');
+            throw new AuthenticationError('You must be logged in to view this information.');
         },
         oneSoftware: async (parent, args, context) => {
             if (context.user) {
                 return Software.findOne({_id: args.softwareId})
                     .select('-__v');
             }
-            throw new AuthenticationError('Not logged in');
+            throw new AuthenticationError('You must be logged in to view this information.');
         },
         allUser: async (parent, args) => {
             return User.find()
@@ -52,6 +52,22 @@ const resolvers = {
         oneUser: async (parent, args) => {
             return User.findOne({_id: args.userId})
                 .select('-__v');
+        },
+        //get one services in the database by ID
+        oneService: async (parent, args, context) => {
+            if (context.user){
+                return Service.findOne({_id: args.serviceId})
+                    .select('-__v');
+            }
+            throw new AuthenticationError('You must be logged in to view this information.');
+        },
+        //get all services in the database
+        allService: async (parent, args, context) => {
+            if (context.user){
+                return Service.find()
+                    .select('-__v');
+            }
+            throw new AuthenticationError('You must be logged in to view this information.');
         },
     },
     Mutation: {
@@ -121,8 +137,32 @@ const resolvers = {
                 const software = await Software.findOneAndDelete({_id: args.softwareId});
                 return software;
             }
-            throw new AuthenticationError('Not logged in');
+            throw new AuthenticationError('You must be logged in to view this information.');
         },
+        //add a service to the database
+        addService: async (parent, args, context) => {
+            if (context.user) {
+                const service = await Service.create(args);
+                return service;
+            }
+            throw new AuthenticationError('You must be logged in to view this information.');
+        },
+        //update an existing service in the database
+        updateService: async (parent, args, context) => {
+            if (context.user){
+                const service = await Service.findOneAndUpdate({_id: args.serviceId}, args, {new: true});
+                return service;
+            }
+            throw new AuthenticationError('You must be logged in to view this information.');
+        },
+        //delete an existing service from the database
+        deleteService: async (parent, args, context) => {
+            if (context.user) {
+                const service = await Service.findOneAndDelete({_id: args.serviceId});
+                return service;
+            }
+            throw new AuthenticationError('You must be logged in to view this information.');
+        }
     }
 }
 

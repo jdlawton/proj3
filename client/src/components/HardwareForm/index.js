@@ -94,7 +94,7 @@ const AddHeaderForm = ({setShowForm, showForm, hardware}) => {
     };
 
     return (
-        <div className="addhardwareform">
+        <div className="addform">
             <form onSubmit={handleFormSubmit}>
                 <div className="formitem">
                     <label htmlFor="type" className="formlabel">Device Type:</label><br></br>
