@@ -2,7 +2,7 @@ import gql from 'graphql-tag';
 
 export const ALL_HARDWARE = gql `
     query allHardware {
-        allHardware{
+        allHardware {
             _id
             type
             hostname
@@ -29,6 +29,19 @@ export const ONE_HARDWARE = gql `
             mac
             role
             description
+            notes
+        }
+    }
+`;
+
+export const ALL_SOFTWARE = gql `
+    query allSoftware {
+        allSoftware {
+            _id
+            name
+            installPoint
+            licensing
+            instructions
             notes
         }
     }

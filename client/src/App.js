@@ -13,9 +13,19 @@ import NoMatch from './pages/NoMatch';
 import Software from './pages/Software';
 import Services from './pages/Services';
 import SingleHardware from './pages/SingleHardware';
+import Signup from './pages/Signup';
 
 
 const client = new ApolloClient({
+  request: operation => {
+    const token = localStorage.getItem('id_token');
+
+    operation.setContext({
+      headers: {
+        authorization: token ? `Bearer ${token}` : ''
+      }
+    });
+  },
   uri: '/graphql'
 });
 
@@ -29,6 +39,7 @@ function App() {
         <div>
           <Switch>
             <Route exact path="/" component={Home} />
+            <Route exact path="/signup" component={Signup} />
             <Route exact path="/hardware" component = {Hardware} />
             <Route exact path="/software" component = {Software} />
             <Route exact path="/services" component = {Services} />

@@ -34,7 +34,7 @@ const Hardware = () => {
             ) : (
                 <div className="cardwrapper">
                     {hardware.map((element, index) => (
-                        <div key={index} className="hardwarecard">
+                        <div key={index} className="card">
                             <Link to={`/hardware/${element._id}`}>
                                 <div className="cardheader">
                                     <h3>{element.hostname}</h3>
