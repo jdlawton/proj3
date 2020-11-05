@@ -85,7 +85,7 @@ const SingleHardware = () => {
                 variables: {hardwareId, type, hostname, address, mask, gateway, mac, role, description, notes}
             });
 
-            setShowForm(0)
+            setShowForm(0);
         } catch (e) {
             console.error(e);
         }
@@ -145,7 +145,7 @@ const SingleHardware = () => {
             </div>
             
             {showForm > 0 && 
-                <form className="hardwareeditform" onSubmit={handleFormSubmit}>
+                <form className="editform" onSubmit={handleFormSubmit}>
                     <div className="formitem">
                         <label htmlFor="type" className="formlabel">Device Type:</label><br></br>
                         <select id="type" name="type" value={type} onChange={handleChange}>

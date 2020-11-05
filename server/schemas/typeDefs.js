@@ -55,6 +55,8 @@ const typeDefs = gql`
         updateHardware(hardwareId: ID!, type: String, hostname: String, address: String, mask: String, gateway: String, mac: String, role: String, description: String, notes: String): Hardware
         deleteHardware(hardwareId: ID!): Hardware
         addSoftware(name: String!, installPoint: String, licensing: String, instructions: String, notes: String): Software
+        updateSoftware(softwareId: ID!, name: String, installPoint: String, licensing: String, instructions: String, notes: String): Software
+        deleteSoftware(softwareId: ID!): Software
     }
 
 `;

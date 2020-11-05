@@ -11,6 +11,7 @@ import Home from './pages/Home'
 import Hardware from './pages/Hardware';
 import NoMatch from './pages/NoMatch';
 import Software from './pages/Software';
+import SingleSoftware from './pages/SingleSoftware';
 import Services from './pages/Services';
 import SingleHardware from './pages/SingleHardware';
 import Signup from './pages/Signup';
@@ -46,6 +47,7 @@ function App() {
             <Route exact path="/software" component = {Software} />
             <Route exact path="/services" component = {Services} />
             <Route exact path="/hardware/:id" component={SingleHardware} />
+            <Route exact path="/software/:id" component={SingleSoftware} />
 
             <Route component={NoMatch} />
           </Switch>

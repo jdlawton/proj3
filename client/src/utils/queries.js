@@ -46,3 +46,16 @@ export const ALL_SOFTWARE = gql `
         }
     }
 `;
+
+export const ONE_SOFTWARE = gql `
+    query oneSoftware ($softwareId: ID!){
+        oneSoftware (softwareId: $softwareId) {
+            _id
+            name
+            installPoint
+            licensing
+            instructions
+            notes
+        }
+    }
+`;

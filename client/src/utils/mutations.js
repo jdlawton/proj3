@@ -87,3 +87,29 @@ export const ADD_SOFTWARE = gql`
         }
     }
 `;
+
+export const UPDATE_SOFTWARE = gql`
+    mutation updateSoftware ($softwareId: ID!, $name: String, $installPoint: String, $licensing: String, $instructions: String, $notes: String){
+        updateSoftware (softwareId: $softwareId, name: $name, installPoint: $installPoint, licensing: $licensing, instructions: $instructions, notes: $notes){
+            _id
+            name
+            installPoint
+            licensing
+            instructions
+            notes
+        }
+    }
+`;
+
+export const DELETE_SOFTWARE = gql`
+    mutation deleteSoftware ($softwareId: ID!){
+        deleteSoftware (softwareId: $softwareId) {
+            _id
+            name
+            installPoint
+            licensing
+            instructions
+            notes
+        }
+    }
+`;

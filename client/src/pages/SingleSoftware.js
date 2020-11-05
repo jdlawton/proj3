@@ -1,14 +1,13 @@
 import React, {useState} from 'react';
+import {useParams} from 'react-router-dom';
 import {useQuery} from '@apollo/react-hooks';
-import {ALL_SOFTWARE} from '../utils/queries';
-import {Link} from 'react-router-dom';
+import {ONE_SOFTWARE} from '../utils/queries';
 import {useMutation} from '@apollo/react-hooks';
-import {ADD_SOFTWARE} from '../utils/mutations';
+import {UPDATE_SOFTWARE, DELETE_SOFTWARE} from '../utils/mutations';
 
-//import any components used on this page
-
-const Software = () => {
-
+const SingleSoftware = () => {
+    const {id: softwareId} = useParams();
+    console.log(softwareId);
     const [showForm, setShowForm] = useState(0);
     const [name, setName] = useState('');
     const [installPoint, setInstallPoint] = useState('');
@@ -16,17 +15,16 @@ const Software = () => {
     const [instructions, setInstructions] = useState('');
     const [notes, setNotes] = useState('');
 
-    const [addSoftware, {error}] = useMutation(ADD_SOFTWARE);
+    const [updateSoftware, {error}] = useMutation(UPDATE_SOFTWARE);
+    const [deleteSoftware] = useMutation(DELETE_SOFTWARE);
 
+    const {loading, data} = useQuery(ONE_SOFTWARE, {
+        variables: {softwareId: softwareId}
+    });
 
-    //use useQuery to make a query request
-    const {loading, data} = useQuery(ALL_SOFTWARE);
-    const software = data?.allSoftware || [];
-    //console.log(software);
+    const software = data?.oneSoftware || {};
 
     const handleChange = event => {
-        //console.log(event);
-        //console.log(event.target.name);
 
         if (event.target.name === 'name') {
             setName(event.target.value);
@@ -51,6 +49,7 @@ const Software = () => {
 
     const handleFormSubmit = async event => {
         event.preventDefault();
+        console.log("softwareId: " + softwareId);
         console.log("name: " + name);
         console.log("installPoint: " + installPoint);
         console.log("licensing: " + licensing);
@@ -58,43 +57,62 @@ const Software = () => {
         console.log("notes: " + notes);
 
         try {
-            //add new software to the database
-            await addSoftware({
-                variables: {name, installPoint, licensing, instructions, notes}
+            await updateSoftware({
+                variables: {softwareId, name, installPoint, licensing, instructions, notes}
             });
-
-            //clear form values
-            setName('');
-            setInstallPoint('');
-            setLicensing('');
-            setInstructions('');
-            setNotes('');
             setShowForm(0);
+        } catch (e) {
+            console.error(e);
+        }
+    };
+
+    const removeSoftware = () => {
+        try {
+            deleteSoftware({
+                variables: {softwareId}
+            });
             window.location.href="/software";
-            
         } catch (e) {
             console.error(e);
         }
     };
 
     const toggleForm = () => {
-        //console.log(showForm);
-        if (showForm === 0){
+        if (showForm === 0) {
+            setName(software.name);
+            setInstallPoint(software.installPoint);
+            setLicensing(software.licensing);
+            setInstructions(software.instructions);
+            setNotes(software.notes);
             setShowForm(1);
         }
         else setShowForm(0);
-    }
+    };
 
     if (loading) {
         return <div>Loading...</div>
     }
-    
+
     return (
-        <main>
-            <h1>Software</h1>
-            <button onClick={toggleForm}>Add Software</button>
-            {showForm > 0 && 
-                <form className="addsoftwareform" onSubmit={handleFormSubmit}>
+        <div className="detailswrapper">
+            <h1>Software Details</h1>
+            <div className="details">
+                <h2>{software.name}</h2>
+                <div className="detailsbody">
+                    <p><span className="cardlabel">Install Point: </span>{software.installPoint}</p>
+                    <p><span className="cardlabel">Licensing: </span>{software.licensing}</p>
+                    <p><span className="cardlabel">Instructions: </span>{software.instructions}</p>
+                    <p><span className="cardlabel">Notes: </span>{software.notes}</p>
+                </div>
+            </div>
+
+            <div classname="detailsbuttons">
+                <button className="btn" onClick={toggleForm}>Edit</button>
+                <button className="btn" onClick={removeSoftware}>Delete</button>
+            </div>
+
+            {showForm > 0 &&
+                <form className="editform" onSubmit={handleFormSubmit}>
                     <div className="formitem">
                         <label htmlFor="name" className="formlabel">Name:</label><br></br>
                         <input type="text" id="name" name="name" value={name} onChange={handleChange}/>
@@ -118,31 +136,11 @@ const Software = () => {
                     <button type="submit">Submit</button>
                 </form>
             }
-            {error && <div>Unable to add software to database...</div>}
-            {loading ? (
-                <div>Loading...</div>
-            ) : (
-                <div className="cardwrapper">
-                    {software.map((element, index) => (
-                        <div key={index} className="card">
-                            <Link to={`/software/${element._id}`}>
-                                <div className="cardheader">
-                                    <h3>{element.name}</h3>
-                                    <p>{element.installPoint}</p>
-                                </div>
-                                <div className="cardbody">
-                                    <p><span className="cardlabel">Licensing:</span><br></br>{element.licensing}</p>
-                                    <p><span className="cardlabel">Instructions:</span><br></br>{element.instructions}</p>
-                                </div>
-                            </Link>
+            {error && <div>Unable to update software...</div>}
+        </div>
 
-                        </div>
-                    ))}
-                </div>
-            )}
-        </main>
     )
+
 }
 
-
-export default Software;
+export default SingleSoftware;
