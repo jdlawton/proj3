@@ -58,11 +58,6 @@ const AddHeaderForm = ({setShowForm, showForm, hardware}) => {
         if (event.target.name === 'notes') {
             setNotes(event.target.value);
         }
-
-
-
-        console.log(error);
-        //setAddress(event.target.value);
     };
 
     const handleFormSubmit = async event => {
@@ -152,6 +147,7 @@ const AddHeaderForm = ({setShowForm, showForm, hardware}) => {
                 </div>
                 <button type="submit">Submit</button>
             </form>
+            {error && <div>Unable to add hardware to database...</div>}
         </div>
         
     );

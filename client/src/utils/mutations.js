@@ -74,3 +74,16 @@ export const ADD_USER = gql`
         }
     }
 `;
+
+export const ADD_SOFTWARE = gql`
+    mutation addSoftware($name: String!, $installPoint: String, $licensing: String, $instructions: String, $notes: String){
+        addSoftware(name: $name, installPoint: $installPoint, licensing: $licensing, instructions: $instructions, notes: $notes){
+            _id
+            name
+            installPoint
+            licensing
+            instructions
+            notes
+        }
+    }
+`;

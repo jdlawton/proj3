@@ -65,9 +65,6 @@ const SingleHardware = () => {
         if (event.target.name === 'notes') {
             setNotes(event.target.value);
         }
-
-        console.log(error);
-        //setAddress(event.target.value);
     }
 
     const handleFormSubmit = async event => {
@@ -95,7 +92,7 @@ const SingleHardware = () => {
     };
 
     const removeHardware = () => {
-        console.log("Inside Delete");
+        //console.log("Inside Delete");
         try{
             deleteHardware({
                 variables: {hardwareId}
@@ -201,6 +198,7 @@ const SingleHardware = () => {
                     <button type="submit">Submit</button>
                 </form>
             }
+            {error && <div>Unable to update hardware...</div>}
         </div>
     )
 }

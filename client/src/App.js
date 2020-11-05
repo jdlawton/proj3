@@ -14,6 +14,7 @@ import Software from './pages/Software';
 import Services from './pages/Services';
 import SingleHardware from './pages/SingleHardware';
 import Signup from './pages/Signup';
+import Login from './pages/Login';
 
 
 const client = new ApolloClient({
@@ -40,6 +41,7 @@ function App() {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/signup" component={Signup} />
+            <Route exact path="/login" component={Login} />
             <Route exact path="/hardware" component = {Hardware} />
             <Route exact path="/software" component = {Software} />
             <Route exact path="/services" component = {Services} />

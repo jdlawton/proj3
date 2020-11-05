@@ -45,7 +45,6 @@ const Hardware = () => {
                                     <p><span className="cardlabel">Description:</span><br></br>{element.description}</p>
                                 </div>
                             </Link>
-
                         </div>
                     ))}
                 </div>
