@@ -26,8 +26,8 @@ const Hardware = () => {
     
     return (
         <main>
-            <h1>Hardware</h1>
-            <button onClick={toggleForm}>Add Hardware</button>
+            <p className="pagetitle">Hardware</p>
+            <button className="addbtn" onClick={toggleForm}>Add Hardware</button>
             {showForm > 0 && <AddHardwareForm setShowForm={setShowForm} showForm={showForm} hardware={hardware}/>}
             {loading ? (
                 <div>Loading...</div>

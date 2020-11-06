@@ -7,7 +7,7 @@ import {UPDATE_SERVICE, DELETE_SERVICE} from '../utils/mutations';
 
 const SingleService = () => {
     const {id: serviceId} = useParams();
-    console.log(serviceId);
+    //console.log(serviceId);
     const [showForm, setShowForm] = useState(0);
     const [name, setName] = useState('');
     const [role, setRole] = useState('');
@@ -54,13 +54,13 @@ const SingleService = () => {
 
     const handleFormSubmit = async event => {
         event.preventDefault();
-        console.log("serviceId: " + serviceId);
-        console.log("name: " + name);
-        console.log("role: " + role);
-        console.log("phone: " + phone);
-        console.log("email: " + email);
-        console.log("portal: " + portal);
-        console.log("notes: " + notes);
+        // console.log("serviceId: " + serviceId);
+        // console.log("name: " + name);
+        // console.log("role: " + role);
+        // console.log("phone: " + phone);
+        // console.log("email: " + email);
+        // console.log("portal: " + portal);
+        // console.log("notes: " + notes);
 
         try {
             await updateService({

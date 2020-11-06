@@ -98,8 +98,8 @@ const Service = () => {
     
     return (
         <main>
-            <h1>Services</h1>
-            <button onClick={toggleForm}>Add Service</button>
+            <p className="pagetitle">Services</p>
+            <button className="addbtn" onClick={toggleForm}>Add Service</button>
             {showForm > 0 && 
                 <form className="addform" onSubmit={handleFormSubmit}>
                     <div className="formitem">

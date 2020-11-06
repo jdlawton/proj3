@@ -91,8 +91,8 @@ const Software = () => {
     
     return (
         <main>
-            <h1>Software</h1>
-            <button onClick={toggleForm}>Add Software</button>
+            <p className="pagetitle">Software</p>
+            <button className="addbtn" onClick={toggleForm}>Add Software</button>
             {showForm > 0 && 
                 <form className="addform" onSubmit={handleFormSubmit}>
                     <div className="formitem">

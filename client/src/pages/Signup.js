@@ -65,7 +65,7 @@ const Signup = () => {
 
               <div className="formitem">
                 <label htmlFor="password" className="formlabel">Password:</label><br></br>
-                <input type="text" id="password" name="password" value={password} onChange={handleChange}/>
+                <input type="password" id="password" name="password" value={password} onChange={handleChange}/>
               </div>
 
               <button className='btn' type='submit'>Submit</button>

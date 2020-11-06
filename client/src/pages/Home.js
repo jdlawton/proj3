@@ -12,7 +12,10 @@ const Home = () => {
     
     return (
         <main>
-            <h1>Home Page</h1>
+                <p className="docsname">CONTOSO.COM Network Documentation</p>
+                <p className="warning"><span className="alert">WARNING:</span> The information contained within this documnentation is strictly confidential.<br></br>Any unauthorized access is forbidden.</p>
+           
+
         </main>
     )
 }
