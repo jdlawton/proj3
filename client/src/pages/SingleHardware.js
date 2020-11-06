@@ -125,7 +125,7 @@ const SingleHardware = () => {
 
     return (
         <div className="detailswrapper">
-            <h1>Details</h1>
+            <h1>Hardware Details</h1>
             <div className="details">
                 <h2>{hardware.hostname}</h2>
                 <div className="detailsbody">

@@ -84,6 +84,7 @@ textarea {
   border-bottom-style: outset;
   border-radius: 15px;
   border-width: 3px;
+  padding: 5px;
 }
 
 .cardheader * {
@@ -132,6 +133,7 @@ textarea {
   border-bottom-style: outset;
   border-radius: 15px;
   border-width: 3px;
+  padding-left: 10px;
 
 }
 
@@ -144,4 +146,59 @@ textarea {
 .editform {
   margin-top: 10px;
   margin-left: 20px;
+}
+
+/* MEDIA QUERIES FOR SMALLER SCREENS */
+@media screen and (max-width: 980px) {
+  .navbar {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navlist {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .navitem {
+    font-size: 18px;
+    margin-right: 1em;
+  }
+
+  main {
+    margin: 0;
+  }
+
+  .docsname {
+    font-size: 20px;
+  }
+
+  .warning {
+    font-size: 14px;
+  }
+
+  .formitem textarea {
+    max-width: 90%;
+  }
+
+  .cardwrapper {
+    justify-content: center;
+  }
+
+  .card {
+    min-width: 40%;
+  }
+
+  .details {
+    width: 100%;
+  }
+
+  .editform {
+    width: 90%;
+  }
+
+  .pagetitle {
+    font-size: 20px;
+  }
 }

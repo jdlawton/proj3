@@ -51,11 +51,11 @@ const Software = () => {
 
     const handleFormSubmit = async event => {
         event.preventDefault();
-        console.log("name: " + name);
-        console.log("installPoint: " + installPoint);
-        console.log("licensing: " + licensing);
-        console.log("instructions: " + instructions);
-        console.log("notes: " + notes);
+        // console.log("name: " + name);
+        // console.log("installPoint: " + installPoint);
+        // console.log("licensing: " + licensing);
+        // console.log("instructions: " + instructions);
+        // console.log("notes: " + notes);
 
         try {
             //add new software to the database
@@ -128,11 +128,6 @@ const Software = () => {
                             <Link to={`/software/${element._id}`}>
                                 <div className="cardheader">
                                     <h3>{element.name}</h3>
-                                    <p>{element.installPoint}</p>
-                                </div>
-                                <div className="cardbody">
-                                    <p><span className="cardlabel">Licensing:</span><br></br>{element.licensing}</p>
-                                    <p><span className="cardlabel">Instructions:</span><br></br>{element.instructions}</p>
                                 </div>
                             </Link>
 

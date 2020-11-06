@@ -102,7 +102,7 @@ const SingleSoftware = () => {
                     <p><span className="cardlabel">Install Point: </span>{software.installPoint}</p>
                     <p><span className="cardlabel">Licensing: </span>{software.licensing}</p>
                     <p><span className="cardlabel">Instructions: </span>{software.instructions}</p>
-                    <p><span className="cardlabel">Notes: </span>{software.notes}</p>
+                    <p><span className="cardlabel">Notes: </span><br></br>{software.notes}</p>
                 </div>
             </div>
 
