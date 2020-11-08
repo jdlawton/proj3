@@ -33,7 +33,6 @@ module.exports = {
         } catch {
             console.log("Invalid token");
         }
-
         //return updated reuest object
         return req;
     }

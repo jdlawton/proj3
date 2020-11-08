@@ -18,7 +18,7 @@ import Login from './pages/Login';
 import Service from './pages/Service';
 import SingleService from './pages/SingleService';
 
-
+//create and configure Apollo client
 const client = new ApolloClient({
   request: operation => {
     const token = localStorage.getItem('id_token');

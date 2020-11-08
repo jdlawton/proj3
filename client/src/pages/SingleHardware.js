@@ -8,7 +8,9 @@ import {UPDATE_HARDWARE, DELETE_HARDWARE} from '../utils/mutations';
 const SingleHardware = () => {
     const {id: hardwareId} = useParams();
     //console.log(hardwareId);
-    //console.log(typeof hardwareId);
+
+    //State hooks used in the Update form, these are used to initially populate the input fields
+    //and they set the variables that are passed to the Database when updating.
     const [showForm, setShowForm] = useState(0);
     const [hostname, setHostname] = useState('');
     const [address, setAddress] = useState('');
@@ -19,15 +21,20 @@ const SingleHardware = () => {
     const [description, setDescription] = useState('');
     const [notes, setNotes] = useState('');
     const [type, setType] = useState('server');
+
+    //Mutations this page will be using, for updating and deleting hardware
     const [updateHardware, {error}] = useMutation(UPDATE_HARDWARE);
     const [deleteHardware] = useMutation(DELETE_HARDWARE);
 
+    //Query for getting a single hardware using the ID value that we click on from the Hardware page.
     const {loading, data} = useQuery(ONE_HARDWARE, {
         variables: {hardwareId: hardwareId}
     });
 
     const hardware = data?.oneHardware || {};
 
+    //Handles changes made to typing in the input fields in the Update form. 
+    //Updates teh appropriate input field.
     const handleChange = event => {
 
         if (event.target.name === 'type') {
@@ -67,6 +74,7 @@ const SingleHardware = () => {
         }
     }
 
+    //On Form Submit, updates the hardware with the information from the Update Form.
     const handleFormSubmit = async event => {
         event.preventDefault();
         // console.log(hardwareId);
@@ -91,6 +99,7 @@ const SingleHardware = () => {
         }
     };
 
+    //Deletes the hardware from the database and then returns the user to the Hardware page listing all of the hardware.
     const removeHardware = () => {
         //console.log("Inside Delete");
         try{
@@ -103,6 +112,8 @@ const SingleHardware = () => {
         }
     }
 
+    //This function toggles the showForm state when the button is clicked. It also sets the 
+    //values of the input fields to the values of the stateHooks.
     const toggleForm = () => {
         if (showForm === 0) {
             setType(hardware.type);

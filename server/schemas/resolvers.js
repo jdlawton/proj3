@@ -22,7 +22,7 @@ const resolvers = {
             }
             throw new AuthenticationError('You must be logged in to view this information.');
         },
-        //get info of logged in user
+        //get info of logged in user (not used in the app, more for testing authentication)
         me: async (parent, args, context) => {
             if (context.user) {
                 const userData = await User.findOne({_id: context.user._id})
@@ -31,6 +31,7 @@ const resolvers = {
             }
             throw new AuthenticationError('You must be logged in to view this information.');
         },
+        //gets list of all software in the database
         allSoftware: async (parent, args, context) => {
             if (context.user) {
                 return Software.find()
@@ -38,6 +39,7 @@ const resolvers = {
             }
             throw new AuthenticationError('You must be logged in to view this information.');
         },
+        //gets one software by ID
         oneSoftware: async (parent, args, context) => {
             if (context.user) {
                 return Software.findOne({_id: args.softwareId})
@@ -45,10 +47,12 @@ const resolvers = {
             }
             throw new AuthenticationError('You must be logged in to view this information.');
         },
+        //gets a list of all users in the database (not used in the app)
         allUser: async (parent, args) => {
             return User.find()
                 .select('-__v');
         },
+        //gets one user by ID (not used in the app)
         oneUser: async (parent, args) => {
             return User.findOne({_id: args.userId})
                 .select('-__v');

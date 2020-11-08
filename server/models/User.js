@@ -1,3 +1,5 @@
+//Model related to managing users of the application.
+
 const {Schema, model} = require ('mongoose');
 const bcrypt = require('bcrypt');
 

@@ -2,9 +2,6 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import logo from '../../assets/td-logo.png';
 import Auth from '../../utils/auth';
-//import hardwareicon from '../../assets/icons/server.png';
-//import softwareicon from '../../assets/icons/save.png';
-//import serviceicon from '../../assets/icons/cloud.png';
 
 
 const Header = () => {

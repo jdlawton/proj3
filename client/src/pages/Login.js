@@ -1,10 +1,7 @@
 import React, {useState} from 'react';
-//import {Link} from 'react-router-dom';
 import {useMutation} from '@apollo/react-hooks';
 import {LOGIN_USER} from '../utils/mutations';
 import Auth from '../utils/auth';
-
-//import any components used on this page
 
 const Login = () => {
 
@@ -22,14 +19,13 @@ const Login = () => {
         }
     }
 
-    //submit form
+    //On form submit, this function logs the user into the system and the Auth component stores the token in local storage
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        console.log('email: ' + email);
-        console.log('password: ' + password);
+        //console.log('email: ' + email);
+        //console.log('password: ' + password);
 
         try {
-            //execute login mutation and pass in variable data from form
             const {data} = await login({
                 variables: {email, password}
             })

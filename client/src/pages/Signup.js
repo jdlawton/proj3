@@ -12,8 +12,7 @@ const Signup = () => {
 
   // update state based on form input changes
   const handleChange = (event) => {
-    //console.log(event);
-    //console.log(event.target.name);
+
 
     if (event.target.name === 'username'){
       setUsername(event.target.value);
@@ -28,15 +27,14 @@ const Signup = () => {
     }
   };
 
-  // submit form
+  //On form submit, try creating a new user in the database with the data entered.
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log('username: ' + username);
-    console.log('email: ' + email);
-    console.log('password: ' + password);
+    // console.log('username: ' + username);
+    // console.log('email: ' + email);
+    // console.log('password: ' + password);
 
     try {
-      //execute addUser mutation and pass in variable data from form
       const {data} = await addUser({
         variables: {username, email, password}
       })

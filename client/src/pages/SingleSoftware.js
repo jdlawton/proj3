@@ -7,7 +7,9 @@ import {UPDATE_SOFTWARE, DELETE_SOFTWARE} from '../utils/mutations';
 
 const SingleSoftware = () => {
     const {id: softwareId} = useParams();
-    console.log(softwareId);
+    //console.log(softwareId);
+
+    //stateHooks used on this page, for the Update Form
     const [showForm, setShowForm] = useState(0);
     const [name, setName] = useState('');
     const [installPoint, setInstallPoint] = useState('');
@@ -15,15 +17,18 @@ const SingleSoftware = () => {
     const [instructions, setInstructions] = useState('');
     const [notes, setNotes] = useState('');
 
+    //mutations used on this page, Update and Delete
     const [updateSoftware, {error}] = useMutation(UPDATE_SOFTWARE);
     const [deleteSoftware] = useMutation(DELETE_SOFTWARE);
 
+    //query used on this page for getting all of the info related to a single software
     const {loading, data} = useQuery(ONE_SOFTWARE, {
         variables: {softwareId: softwareId}
     });
 
     const software = data?.oneSoftware || {};
 
+    //Handles updating the values in the input fields of the Update Form based on which field is being typded into.
     const handleChange = event => {
 
         if (event.target.name === 'name') {
@@ -47,14 +52,15 @@ const SingleSoftware = () => {
         }
     }
 
+    //On Form Submit, update the software according to the values in the Update Form fields.
     const handleFormSubmit = async event => {
         event.preventDefault();
-        console.log("softwareId: " + softwareId);
-        console.log("name: " + name);
-        console.log("installPoint: " + installPoint);
-        console.log("licensing: " + licensing);
-        console.log("instructions: " + instructions);
-        console.log("notes: " + notes);
+        // console.log("softwareId: " + softwareId);
+        // console.log("name: " + name);
+        // console.log("installPoint: " + installPoint);
+        // console.log("licensing: " + licensing);
+        // console.log("instructions: " + instructions);
+        // console.log("notes: " + notes);
 
         try {
             await updateSoftware({
@@ -66,6 +72,7 @@ const SingleSoftware = () => {
         }
     };
 
+    //Deletes the current software from the database.
     const removeSoftware = () => {
         try {
             deleteSoftware({
@@ -77,6 +84,8 @@ const SingleSoftware = () => {
         }
     };
 
+    //Toggles the stateHook used to conditionally display the form, also sets the values in the input fields
+    //of the Update Form with the values in the stateHooks.
     const toggleForm = () => {
         if (showForm === 0) {
             setName(software.name);

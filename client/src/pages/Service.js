@@ -5,9 +5,6 @@ import {Link} from 'react-router-dom';
 import {useMutation} from '@apollo/react-hooks';
 import {ADD_SERVICE} from '../utils/mutations';
 
-
-//import any components used on this page
-
 const Service = () => {
     const [showForm, setShowForm] = useState(0);
     const [name, setName] = useState('');
@@ -25,9 +22,8 @@ const Service = () => {
     const service = data?.allService || [];
     //console.log(service);
 
+    //Updates the value in the input fields in the form depending on which field is being typed in
     const handleChange = event => {
-        //console.log(event);
-        //console.log(event.target.name);
 
         if (event.target.name === 'name') {
             setName(event.target.value);
@@ -54,14 +50,15 @@ const Service = () => {
         }
     }
 
+    //On form submit, this function adds the new service to the database
     const handleFormSubmit = async event => {
         event.preventDefault();
-        console.log("name: " + name);
-        console.log("role: " + role);
-        console.log("phone: " + phone);
-        console.log("email: " + email);
-        console.log("portal: " + portal);
-        console.log("notes: " + notes);
+        // console.log("name: " + name);
+        // console.log("role: " + role);
+        // console.log("phone: " + phone);
+        // console.log("email: " + email);
+        // console.log("portal: " + portal);
+        // console.log("notes: " + notes);
 
         try {
             //add new service to the database
@@ -77,6 +74,7 @@ const Service = () => {
             setPortal('');
             setNotes('');
             setShowForm(0);
+            //refreshes the page so the new service displays
             window.location.href="/service";
             
         } catch (e) {
@@ -84,14 +82,15 @@ const Service = () => {
         }
     };
 
+    //Toggles the value of showForm which is then used to conditionally display the form.
     const toggleForm = () => {
-        //console.log(showForm);
         if (showForm === 0){
             setShowForm(1);
         }
         else setShowForm(0);
     }
 
+    //if data is loading, show the Loading div
     if (loading) {
         return <div>Loading...</div>
     }

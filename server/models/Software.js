@@ -1,3 +1,5 @@
+//For documentation pertaining to Software and any licensing or special instructions that go along with it.
+
 const {Schema, model} = require ('mongoose');
 
 const softwareSchema = new Schema(

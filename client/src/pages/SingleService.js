@@ -8,6 +8,8 @@ import {UPDATE_SERVICE, DELETE_SERVICE} from '../utils/mutations';
 const SingleService = () => {
     const {id: serviceId} = useParams();
     //console.log(serviceId);
+
+    //sets up StateHooks that we will be using for the Service. They will be used for the update form.
     const [showForm, setShowForm] = useState(0);
     const [name, setName] = useState('');
     const [role, setRole] = useState('');
@@ -16,15 +18,18 @@ const SingleService = () => {
     const [portal, setPortal] = useState('');
     const [notes, setNotes] = useState('');
 
+    //Update and Delete mutations
     const [updateService, {error}] = useMutation(UPDATE_SERVICE);
     const [deleteService] = useMutation(DELETE_SERVICE);
 
+    //Get single Service info based on ID
     const {loading, data} = useQuery(ONE_SERVICE, {
         variables: {serviceId: serviceId}
     });
 
     const service = data?.oneService || {};
 
+    //Handles updating the input field values on the Update Form depending on which field is being typed into.
     const handleChange = event => {
 
         if (event.target.name === 'name') {
@@ -52,6 +57,7 @@ const SingleService = () => {
         }
     }
 
+    //On Form Submit, updates the Service in the database.
     const handleFormSubmit = async event => {
         event.preventDefault();
         // console.log("serviceId: " + serviceId);
@@ -72,6 +78,7 @@ const SingleService = () => {
         }
     };
 
+    //Deletes the current service from the database
     const removeService = () => {
         try {
             deleteService({
@@ -83,6 +90,8 @@ const SingleService = () => {
         }
     };
 
+    //Changes the showForm stateHook which is used to conditionally display the Update Form and also sets the 
+    //values of the input fields in the form to the values of their respective stateHooks.
     const toggleForm = () => {
         if (showForm === 0) {
             setName(service.name);

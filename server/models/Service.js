@@ -1,3 +1,5 @@
+//Services would denote any sort of 3rd party service or contact that you would want to keep track of, i.e. Cloud Services, Support contacts for vendors, ISPs, etc.
+
 const {Schema, model} = require ('mongoose');
 
 const serviceSchema = new Schema(

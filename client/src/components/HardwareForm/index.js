@@ -1,10 +1,9 @@
 import React, {useState} from 'react';
 import {useMutation} from '@apollo/react-hooks';
 import {ADD_HARDWARE} from '../../utils/mutations';
-//import {ALL_HARDWARE} from '../../utils/queries';
 
 
-const AddHeaderForm = ({setShowForm, showForm, hardware}) => {
+const AddHeaderForm = ({setShowForm}) => {
 
     const [type, setType] = useState('server');
     const [hostname, setHostname] = useState('');
@@ -85,7 +84,6 @@ const AddHeaderForm = ({setShowForm, showForm, hardware}) => {
             setRole('');
             setDescription('');
             setNotes('');
-            //console.log("showForm: " + showForm);
             setShowForm(0);
 
         } catch (e) {

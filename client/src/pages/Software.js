@@ -5,10 +5,10 @@ import {Link} from 'react-router-dom';
 import {useMutation} from '@apollo/react-hooks';
 import {ADD_SOFTWARE} from '../utils/mutations';
 
-//import any components used on this page
 
 const Software = () => {
 
+    //stateHooks used in this page
     const [showForm, setShowForm] = useState(0);
     const [name, setName] = useState('');
     const [installPoint, setInstallPoint] = useState('');
@@ -16,14 +16,14 @@ const Software = () => {
     const [instructions, setInstructions] = useState('');
     const [notes, setNotes] = useState('');
 
+    //Query for getting all software in the database
     const [addSoftware, {error}] = useMutation(ADD_SOFTWARE);
 
-
-    //use useQuery to make a query request
     const {loading, data} = useQuery(ALL_SOFTWARE);
     const software = data?.allSoftware || [];
     //console.log(software);
 
+    //Updates the input field in the Add Software form according to which field is being typed in.
     const handleChange = event => {
         //console.log(event);
         //console.log(event.target.name);
@@ -49,6 +49,7 @@ const Software = () => {
         }
     }
 
+    //On Form Submit, add the new Software to the database using the values entered in the form.
     const handleFormSubmit = async event => {
         event.preventDefault();
         // console.log("name: " + name);
@@ -58,7 +59,6 @@ const Software = () => {
         // console.log("notes: " + notes);
 
         try {
-            //add new software to the database
             await addSoftware({
                 variables: {name, installPoint, licensing, instructions, notes}
             });
@@ -77,6 +77,7 @@ const Software = () => {
         }
     };
 
+    //Toggles the showForm stateHook to conditionally display the form when the button is pressed.
     const toggleForm = () => {
         //console.log(showForm);
         if (showForm === 0){
